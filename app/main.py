@@ -27,7 +27,9 @@ class CarWashStation:
         if 1.0 <= distance_from_city_center <= 10.0:
             self.distance_from_city_center = distance_from_city_center
         else:
-            raise ValueError("distance_from_city_center should be between 1.0 and 10.0")
+            raise ValueError(
+                "distance_from_city_center should be between 1.0 and 10.0"
+            )
         self.clean_power = clean_power
         if 1.0 <= average_rating <= 5.0:
             self.average_rating = round(average_rating, 1)
