@@ -5,8 +5,14 @@ class Car:
             clean_mark: int,
             brand: str
     ) -> None:
-        self.comfort_class = comfort_class
-        self.clean_mark = clean_mark
+        if 1 <= comfort_class <= 7:
+            self.comfort_class = comfort_class
+        else:
+            raise ValueError("comfort_class should be between 1 and 7")
+        if 1 <= clean_mark <= 10:
+            self.clean_mark = clean_mark
+        else:
+            raise ValueError("clean_mark should be between 1 and 10")
         self.brand = brand
 
 
@@ -18,9 +24,15 @@ class CarWashStation:
             average_rating: float,
             count_of_ratings: int
     ) -> None:
-        self.distance_from_city_center = distance_from_city_center
+        if 1.0 <= distance_from_city_center <= 10.0:
+            self.distance_from_city_center = distance_from_city_center
+        else:
+            raise ValueError("distance_from_city_center should be between 1.0 and 10.0")
         self.clean_power = clean_power
-        self.average_rating = average_rating
+        if 1.0 <= average_rating <= 5.0:
+            self.average_rating = round(average_rating, 1)
+        else:
+            raise ValueError("average_rating should be between 1.0 and 5.0")
         self.count_of_ratings = count_of_ratings
 
     def serve_cars(self, list_of_cars: list) -> float:
