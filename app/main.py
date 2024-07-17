@@ -1,3 +1,10 @@
+def validate_func(value: float, min_value: float, max_value: float, name_argument: str) -> int | float:
+    if min_value <= value <= max_value:
+        return value
+    else:
+        raise ValueError(f"{name_argument} should be between {min_value} and {max_value}")
+
+
 class Car:
     def __init__(
             self,
@@ -5,14 +12,8 @@ class Car:
             clean_mark: int,
             brand: str
     ) -> None:
-        if 1 <= comfort_class <= 7:
-            self.comfort_class = comfort_class
-        else:
-            raise ValueError("comfort_class should be between 1 and 7")
-        if 1 <= clean_mark <= 10:
-            self.clean_mark = clean_mark
-        else:
-            raise ValueError("clean_mark should be between 1 and 10")
+        self.comfort_class = validate_func(comfort_class, 1, 7, "comfort_class")
+        self.clean_mark = validate_func(clean_mark, 1, 10, "clean_mark")
         self.brand = brand
 
 
@@ -24,17 +25,20 @@ class CarWashStation:
             average_rating: float,
             count_of_ratings: int
     ) -> None:
-        if 1.0 <= distance_from_city_center <= 10.0:
-            self.distance_from_city_center = distance_from_city_center
-        else:
-            raise ValueError(
-                "distance_from_city_center should be between 1.0 and 10.0"
-            )
+
+        self.distance_from_city_center = validate_func(
+            distance_from_city_center,
+            1.0,
+            10.0,
+            "distance_from_city_center")
         self.clean_power = clean_power
-        if 1.0 <= average_rating <= 5.0:
-            self.average_rating = round(average_rating, 1)
-        else:
-            raise ValueError("average_rating should be between 1.0 and 5.0")
+        self.average_rating = round(
+            validate_func(
+                average_rating,
+                1.0,
+                5.0,
+                "average_rating"
+            ), 1)
         self.count_of_ratings = count_of_ratings
 
     def serve_cars(self, list_of_cars: list) -> float:
