@@ -1,8 +1,15 @@
-def validate_func(value: float, min_value: float, max_value: float, name_argument: str) -> int | float:
+def validate_func(
+        value: float,
+        min_value: float,
+        max_value: float,
+        name_argument: str
+) -> int | float:
     if min_value <= value <= max_value:
         return value
     else:
-        raise ValueError(f"{name_argument} should be between {min_value} and {max_value}")
+        raise ValueError(
+            f"{name_argument} should be between {min_value} and {max_value}"
+        )
 
 
 class Car:
@@ -12,8 +19,18 @@ class Car:
             clean_mark: int,
             brand: str
     ) -> None:
-        self.comfort_class = validate_func(comfort_class, 1, 7, "comfort_class")
-        self.clean_mark = validate_func(clean_mark, 1, 10, "clean_mark")
+        self.comfort_class = validate_func(
+            comfort_class,
+            1,
+            7,
+            "comfort_class"
+        )
+        self.clean_mark = validate_func(
+            clean_mark,
+            1,
+            10,
+            "clean_mark"
+        )
         self.brand = brand
 
 
