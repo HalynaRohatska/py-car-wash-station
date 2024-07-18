@@ -6,10 +6,6 @@ def validate_func(
 ) -> int | float:
     if min_value <= value <= max_value:
         return value
-    else:
-        raise ValueError(
-            f"{name_argument} should be between {min_value} and {max_value}"
-        )
 
 
 class Car:
